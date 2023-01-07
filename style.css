@@ -1,0 +1,72 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: grid;
+    grid-template-rows: 40px 1fr 60px;
+    height: 100vh;
+    margin: 0px;
+    background-color: whitesmoke;
+}
+
+a {
+    color: black;
+    background-color: rgb(244, 244, 244);
+    padding: 8px;
+    border-radius: 12px;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: rgb(222, 222, 222);
+    transition: 400ms;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: darkslategrey;
+    color: rgb(244, 244, 244);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+main > p {
+    text-align: center;
+    background-color: bisque;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+main > p:hover {
+    background-color: rgb(255, 231, 203);
+    transition: 400ms;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: darkslategray;
+    align-items: center;
+}
+
+nav > a {
+    flex-grow: 1;
+    margin: 4px;
+    text-align: center;
+}
+
+#profileimg {
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    border: 4px solid bisque;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
