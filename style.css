@@ -1,18 +1,28 @@
+:root {
+    --primary: #1D2026;
+    --secondary: #2e3137;
+    --accent: darkslategrey;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: grid;
-    grid-template-rows: 40px 1fr 60px;
+    grid-template-rows: 50px 1fr 60px;
     height: 100vh;
     margin: 0px;
-    background-color: whitesmoke;
+    background-color: var(--primary);
 }
 
 a {
-    color: black;
-    background-color: rgb(244, 244, 244);
+    color: rgb(244, 244, 244);
+    background-color: var(--secondary);
     padding: 8px;
     border-radius: 12px;
     text-decoration: none;
+}
+
+p {
+     color: rgb(244, 244, 244);
 }
 
 a:hover {
@@ -32,19 +42,37 @@ main {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    gap: 0.5em;
+}
+
+main > a {
+    text-align: center;
+    background-color: gray;
+    padding: 20px;
+    border-radius: 12px; 
+}
+
+main > a:first-of-type {
+    margin-top: 1em;
+}
+
+main > a:hover {
+    background-color: rgb(146, 146, 146);
+    transition: 400ms;
 }
 
 main > p {
     text-align: center;
-    background-color: bisque;
+    background-color: gray;
     padding: 20px;
     border-radius: 12px;
 }
 
 main > p:hover {
-    background-color: rgb(255, 231, 203);
+    background-color: rgb(146, 146, 146);
     transition: 400ms;
 }
+
 
 nav {
     display: flex;
@@ -64,7 +92,7 @@ nav > a {
     height: 200px;
     width: 200px;
     border-radius: 100%;
-    border: 4px solid bisque;
+    border: 4px solid darkslategray;
     display: block;
     margin-left: auto;
     margin-right: auto;

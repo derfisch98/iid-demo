@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="forms.css">
+</head>
+<body>
+    <header>
+        <a href="#">Menü</a>
+        <h1>WG</h1>
+        <a href="#">Profil</a>
+    </header>
+    <main id="mainid">
+        <article id="controller">
+            <h2>Nutzer Hinzufügen</h2>
+            <form action="/add-user" onsubmit="addUser(event)">
+                <input type="text">
+            </form>
+        </article>
+        <ul>
+            
+        </ul>
+        <article id="user0" class="groupMember">
+            <h2>Alex</h2>
+            <form action="/add-zutat" onsubmit="addZutat(event)">
+                <input type="text">
+            </form>
+            <ul>
+
+            </ul>
+        </article>
+        <article id="user1" class="groupMember">
+            <h2>Tim</h2>
+            <form action="/add-zutat" onsubmit="addZutat(event)">
+                <input type="text">
+            </form>
+            <ul>
+
+            </ul>
+        </article>
+        <article id="user2" class="groupMember">
+            <h2>Heschyar</h2>
+            <form action="/add-zutat" onsubmit="addZutat(event)">
+                <input type="text">
+            </form>
+            <ul>
+
+            </ul>
+        </article>
+        <article id="user3" class="groupMember">
+            <h2>Niklas</h2>
+            <form action="/add-zutat" onsubmit="addZutat(event)">
+                <input type="text">
+            </form>
+            <ul>
+
+            </ul>
+        </article>
+        <article id="user4" class="groupMember">
+            <h2>Luca</h2>
+            <form action="/add-zutat" onsubmit="addZutat(event)">
+                <input type="text">
+            </form>
+            <ul>
+
+            </ul>
+        </article>
+    </main>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="groups.html">Gruppen</a>
+        <a href="profile.html">Profil</a>
+    </nav>
+</body>
+
+<script>
+    z_indices = [];
+    user = 0;
+
+    function removeZutat(entf){
+        //parent article:
+        var li_id = entf.parentElement.id;
+        var li = document.getElementById(li_id);
+        var ul = li.parentElement;
+        ul.removeChild(li);
+    }
+
+
+    function addZutat(event){
+        event.preventDefault();
+        var item = event.target.querySelector('input[type="text"]').value;
+        //user_number und z_index als id Nummern für zutaten
+        var user_number = event.target.closest("article").id.slice(-1);
+        var z_index = z_indices[user_number];
+        
+
+            //anker erstellen
+            const entf = document.createElement("a");
+            const entf_node = document.createTextNode("\u2716");
+            entf.appendChild(entf_node);
+            entf.setAttribute("onclick", "removeZutat(this)");
+            
+            //li erstellenasd
+            const li = document.createElement("li");
+            const  li_node = document.createTextNode(item);
+            li.appendChild(li_node);
+            li.appendChild(entf);
+            li.setAttribute("id", "z" + user_number+ "" + z_index);
+
+        //ul finden, die zum selben article gehört, von dem auch das event abstammt
+        const ul = event.target.parentElement.querySelector("ul");
+        ul.appendChild(li);
+        z_indices[user_number] += 1;
+
+    }
+
+    function addUser(event){
+        event.preventDefault();
+
+        //Wert aus input-Feld parsen
+        var name = event.target.querySelector('input[type="text"]').value;
+
+            //article mit id="userN" erstellen
+            const article = document.createElement("article");
+            article.setAttribute("id", "user" + user);
+            article.setAttribute("class", "groupMember");
+
+            //h2 erstellen, name als Text übergeben
+            const heading = document.createElement("h2");
+            const name_node = document.createTextNode(name);
+            heading.appendChild(name_node);
+
+            //form erstellen
+            const form = document.createElement("form");
+            form.setAttribute("action", "/add-zutat");
+            form.setAttribute("onsubmit", "addZutat(event)");
+                //input-Felder erstellen-->in form appenden
+                const t_input = document.createElement("input");
+                t_input.setAttribute("type", "text");
+                form.appendChild(t_input);
+            
+            //ul erstellen
+            const ul = document.createElement("ul");
+
+
+        //heading in article, article in den Body
+        var main = document.getElementById("mainid");
+        article.appendChild(heading);
+        article.append(form);
+        article.append(ul);
+        main.append(article);
+
+        user++;
+        z_indices.push(0);
+        console.log(name);
+        console.log();
+    }
+</script>
+</html>

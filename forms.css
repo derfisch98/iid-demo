@@ -1,0 +1,40 @@
+:root {
+    --primary: #1D2026;
+    --secondary: #2e3137;
+    --accent: darkslategrey;
+}
+
+main {
+    align-items: center;
+}
+
+.groupMember {
+    background-color: gray;
+    color: rgb(244, 244, 244);
+    padding: 8px;
+    border-radius: 12px;
+    width: 90vw;
+    max-width: 90vw;
+}
+
+.groupMember > ul {
+    line-height: 250%;
+}
+
+.groupMember > form > input {
+    width: 88vw;
+    height: 20px;
+    border-radius: 4px;
+}
+
+#controller {
+    background-color: darkslategray;
+    color: rgb(244, 244, 244);
+    padding-bottom: 8px;
+    width: 100vw;
+    text-align: center;
+}
+
+#controller > form > input {
+    width: 95vw;
+}
